@@ -115,12 +115,12 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade" id="updateBookModal" tabindex="-1" role="dialog"
-      aria-labelledby="bookEditModalLabel" aria-hidden="true">
+    <div class="modal fade" id="updateBookModal" tabindex="-1" role="dialog" aria-labelledby="bookEditModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="updateBookModalLabel">Edit Book {{editBook?.name}}</h5>
+            <h5 class="modal-title" id="updateBookModalLabel">Könyv szerkesztése {{editBook?.name}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -129,35 +129,42 @@
             <form #editForm="ngForm" (ngSubmit)="onUpdateBook(editBook)">
               <div class="form-group">
                 <label for="author">Szerző</label>
-                <input type="text" ngModel="{{editBook?.author}}" name="author" class="form-control" id="author" placeholder="Szerző">
+                <input type="text" ngModel="{{editBook?.author}}" name="author" class="form-control" id="author"
+                  placeholder="Szerző">
               </div>
               <div class="form-group">
-                <label for="name">Job title</label>
-                <input type="text" ngModel="{{editBook?.name}}" name="name" class="form-control" id="name" placeholder="Cím">
+                <label for="name">Cím</label>
+                <input type="text" ngModel="{{editBook?.name}}" name="name" class="form-control" id="name"
+                  placeholder="Cím">
               </div>
               <div class="form-group">
-                <label for="category">Job title</label>
-                <input type="text" ngModel="{{editBook?.category}}" name="category" class="form-control" id="category" placeholder="Kategória">
+                <label for="category">Kategória</label>
+                <input type="text" ngModel="{{editBook?.category}}" name="category" class="form-control" id="category"
+                  placeholder="Kategória">
               </div>
               <div class="form-group">
-                <label for="publisher">Job title</label>
-                <input type="text" ngModel="{{editBook?.publisher}}" name="publisher" class="form-control" id="publisher" placeholder="Kiadó">
+                <label for="publisher">Kiadó</label>
+                <input type="text" ngModel="{{editBook?.publisher}}" name="publisher" class="form-control"
+                  id="publisher" placeholder="Kiadó">
               </div>
               <div class="form-group">
-                <label for="price">Job title</label>
-                <input type="number" ngModel="{{editBook?.price}}" name="price" class="form-control" id="price" placeholder="Ár (Ft)">
+                <label for="price">Ár</label>
+                <input type="number" ngModel="{{editBook?.price}}" name="price" class="form-control" id="price"
+                  placeholder="Ár (Ft)">
               </div>
               <div class="form-group">
-                <label for="releaseDate">Job title</label>
-                <input type="text" ngModel="{{editBook?.releaseDate}}" name="releaseDate" class="form-control" id="releaseDate" placeholder="Kiadás dátuma">
+                <label for="releaseDate">Kiadás dátuma</label>
+                <input type="text" ngModel="{{editBook?.releaseDate}}" name="releaseDate" class="form-control"
+                  id="releaseDate" placeholder="Kiadás dátuma">
               </div>
 
               <input type="hidden" ngModel="{{editBook?.id}}" name="id" class="form-control" id="id">
-              <input type="hidden" ngModel="{{editBook?.bookCode}}" name="bookCode" class="form-control"id="bookCode">
+              <input type="hidden" ngModel="{{editBook?.bookCode}}" name="bookCode" class="form-control" id="bookCode">
 
               <div class="modal-footer">
                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                <button (click)="onUpdateBook(editForm.value)" data-dismiss="modal" class="btn btn-primary">Módosítások mentése</button>
+                <button (click)="onUpdateBook(editForm.value)" data-dismiss="modal" class="btn btn-primary">Módosítások
+                  mentése</button>
               </div>
             </form>
           </div>
@@ -165,5 +172,26 @@
       </div>
     </div>
 
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteBookModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Könyv törlése</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Biztos ki akarod törölni ezt a könyvet ({{deleteBook?.name}})?</p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button (click)="onDeleteBook(deleteBook.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
