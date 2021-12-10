@@ -79,7 +79,7 @@ export class AppComponent implements OnInit {
     button.click();
   }
 
-  public onOpenModal(book: Book, mode: string) : void {
+  public onOpenModal(book: Book , mode: string) : void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
@@ -90,6 +90,7 @@ export class AppComponent implements OnInit {
       button.setAttribute('data-target', '#updateBookModal');
     }
     else if (mode === 'delete'){
+      this.deleteBook = book;
       button.setAttribute('data-target', '#deleteBookModal');
     }
     container?.appendChild(button);
