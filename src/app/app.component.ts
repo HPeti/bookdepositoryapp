@@ -68,6 +68,26 @@ export class AppComponent implements OnInit {
     );
   }
 
+public searchBooks(key: string): void {
+  console.log(key);
+  if(!key){
+    this.getBooks();
+  }
+  else{
+    const results: Book[] = [];
+    for (const book of this.books) {
+      if(book.name.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        book.author.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        book.category.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        book.publisher.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        book.releaseDate.toLowerCase().indexOf(key.toLowerCase()) !== -1){
+        results.push(book);
+      }  
+    }
+    this.books = results;
+  }
+}
+
   public onOpenModalAdd(): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
