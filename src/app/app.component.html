@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" (click)="onOpenModal(null, 'add')" href="#">Könyv hozzáadása <span
+        <a class="nav-link" (click)="onOpenModalAdd()" href="#">Könyv hozzáadása <span
             class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
@@ -126,7 +126,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form #editForm="ngForm" (ngSubmit)="onUpdateBook(editForm)">
+            <form #editForm="ngForm" (ngSubmit)="onUpdateBook(editBook)">
               <div class="form-group">
                 <label for="author">Szerző</label>
                 <input type="text" ngModel="{{editBook?.author}}" name="author" class="form-control" id="author" placeholder="Szerző">
