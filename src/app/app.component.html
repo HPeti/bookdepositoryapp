@@ -1,74 +1,80 @@
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
   <a class="navbar-brand" href="#">Book depository example</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-              <a class="nav-link" (click)="onOpenModal(null, 'add')" href="#">Könyv hozzáadása <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="http://fontenele.github.io/bootstrap-navbar-dropdowns/" target="_blank">Github</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-      </ul>
-      <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Könyv cím keresése..." aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Keresés</button>
-      </form>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="onOpenModal(null, 'add')" href="#">Könyv hozzáadása <span
+            class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://fontenele.github.io/bootstrap-navbar-dropdowns/" target="_blank">Github</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Könyv cím keresése..." aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Keresés</button>
+    </form>
   </div>
 </div>
 
 <main role="main" class="container">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container" id="main-container">
-<div class="row">
-    <div *ngFor="let book of books" class="col-md-3">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let book of books" class="col-md-3">
         <div class="ibox">
-            <div class="ibox-content product-box">
-                <div class="product-imitation">
-                    [ INFO ]
-                    <!-- 
+          <div class="ibox-content product-box">
+            <div class="product-imitation">
+              [ INFO ]
+              <!-- 
                       <img src="{{book?.imageUrl}}" alt="">
                     -->
-                </div>
-                <div class="product-desc">
-                    <span class="product-price">
-                        {{book?.price}} Ft
-                    </span>
-                    <small class="text-muted">{{book?.category}}</small>
-                    <a href="#" class="product-name">{{book?.name}} - {{book?.author}}</a>
-
-                    <div class="small m-t-xs">
-                        Kiadó: {{book?.publisher}}
-                        Kiadás ideje: {{book?.releaseDate}}
-                    </div>
-                    <div class="card-body">
-                      <div class="float-right btn-group btn-group-sm">
-                          <a href="#" (click)="onOpenModal(book, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                          <a href="#" (click)="onOpenModal(book, 'delete')"class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
-                      </div>
-                  </div>
-                </div>
             </div>
-        </div>
-    </div>
-</div>
+            <div class="product-desc">
+              <span class="product-price">
+                {{book?.price}} Ft
+              </span>
+              <small class="text-muted">{{book?.category}}</small>
+              <a href="#" class="product-name">{{book?.name}} - {{book?.author}}</a>
 
-  <!-- Add Book Modal -->
-  <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
+              <div class="small m-t-xs">
+                Kiadó: {{book?.publisher}}
+                Kiadás ideje: {{book?.releaseDate}}
+              </div>
+              <div class="card-body">
+                <div class="float-right btn-group btn-group-sm">
+                  <a href="#" (click)="onOpenModal(book, 'edit')" class="btn btn-primary tooltips" data-placement="top"
+                    data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                  <a href="#" (click)="onOpenModal(book, 'delete')" class="btn btn-secondary tooltips"
+                    data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i
+                      class="fa fa-times"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Book Modal -->
+    <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
             <h5 class="modal-title" id="addBookModalLabel">Könyv hozzáadása</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-        <div class="modal-body">
+          </div>
+          <div class="modal-body">
             <form #addForm="ngForm" (ngSubmit)="onAddBook(addForm)">
               <div class="form-group">
                 <label for="author">Szerző</label>
@@ -80,29 +86,84 @@
               </div>
               <div class="form-group">
                 <label for="category">Kategória</label>
-                <input type="text" ngModel name="category" class="form-control" id="category" placeholder="Kategória" required>
+                <input type="text" ngModel name="category" class="form-control" id="category" placeholder="Kategória"
+                  required>
               </div>
               <div class="form-group">
                 <label for="publisher">Kiadó</label>
-                <input type="text" ngModel name="publisher" class="form-control" id="publisher" placeholder="Kiadó neve" required>
+                <input type="text" ngModel name="publisher" class="form-control" id="publisher" placeholder="Kiadó neve"
+                  required>
               </div>
               <div class="form-group">
                 <label for="price">Ár</label>
-                <input type="number" ngModel name="price" class="form-control" id="price" placeholder="ár (ft)" required>
+                <input type="number" ngModel name="price" class="form-control" id="price" placeholder="ár (ft)"
+                  required>
               </div>
               <div class="form-group">
                 <label for="releaseDate">Kiadási dátum</label>
-                <input type="text" ngModel name="releaseDate" class="form-control" id="releaseDate" placeholder="Kiadási dátum" required>
+                <input type="text" ngModel name="releaseDate" class="form-control" id="releaseDate"
+                  placeholder="Kiadási dátum" required>
               </div>
               <div class="modal-footer">
-                <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+                <button type="button" id="add-book-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Könyv hozzáadása</button>
               </div>
             </form>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-</div>
-</main>
 
+    <!-- Edit Modal -->
+    <div class="modal fade" id="updateBookModal" tabindex="-1" role="dialog"
+      aria-labelledby="bookEditModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateBookModalLabel">Edit Book {{editBook?.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #editForm="ngForm" (ngSubmit)="onUpdateBook(editForm)">
+              <div class="form-group">
+                <label for="author">Szerző</label>
+                <input type="text" ngModel="{{editBook?.author}}" name="author" class="form-control" id="author" placeholder="Szerző">
+              </div>
+              <div class="form-group">
+                <label for="name">Job title</label>
+                <input type="text" ngModel="{{editBook?.name}}" name="name" class="form-control" id="name" placeholder="Cím">
+              </div>
+              <div class="form-group">
+                <label for="category">Job title</label>
+                <input type="text" ngModel="{{editBook?.category}}" name="category" class="form-control" id="category" placeholder="Kategória">
+              </div>
+              <div class="form-group">
+                <label for="publisher">Job title</label>
+                <input type="text" ngModel="{{editBook?.publisher}}" name="publisher" class="form-control" id="publisher" placeholder="Kiadó">
+              </div>
+              <div class="form-group">
+                <label for="price">Job title</label>
+                <input type="number" ngModel="{{editBook?.price}}" name="price" class="form-control" id="price" placeholder="Ár (Ft)">
+              </div>
+              <div class="form-group">
+                <label for="releaseDate">Job title</label>
+                <input type="text" ngModel="{{editBook?.releaseDate}}" name="releaseDate" class="form-control" id="releaseDate" placeholder="Kiadás dátuma">
+              </div>
+
+              <input type="hidden" ngModel="{{editBook?.id}}" name="id" class="form-control" id="id">
+              <input type="hidden" ngModel="{{editBook?.bookCode}}" name="bookCode" class="form-control"id="bookCode">
+
+              <div class="modal-footer">
+                <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                <button (click)="onUpdateBook(editForm.value)" data-dismiss="modal" class="btn btn-primary">Módosítások mentése</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
