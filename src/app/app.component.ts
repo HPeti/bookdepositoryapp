@@ -32,7 +32,20 @@ export class AppComponent implements OnInit {
   }
 
   public onAddBook(addForm: NgForm): void{
+    document.getElementById('add-book-form')?.click();
     this.bookService.addBook(addForm.value).subscribe(
+      (response: Book) => {
+        console.log(response);
+        this.getBooks();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+  public onUpdateBook(book: Book): void{
+    this.bookService.updateBook(book).subscribe(
       (response: Book) => {
         console.log(response);
         this.getBooks();
@@ -55,16 +68,25 @@ export class AppComponent implements OnInit {
     );
   }
 
-  public onOpenModal(book: Book | null, mode: string) : void {
+  public onOpenModalAdd(): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
-    if(mode === 'add'){
-      button.setAttribute('data-target', '#addBookModal');
-    }
-    else if (mode === 'add'){
+    button.setAttribute('data-target', '#addBookModal');
+    container?.appendChild(button);
+    button.click();
+  }
+
+  public onOpenModal(book: Book, mode: string) : void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'edit'){
+      this.editBook = book;
       button.setAttribute('data-target', '#updateBookModal');
     }
     else if (mode === 'delete'){
